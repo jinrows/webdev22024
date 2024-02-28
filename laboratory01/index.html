@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    // Task #1. 
+
+        let numList = [10,22,30,45,53,67,70,87,99,100];
+        function isOdd(number){
+            return new Promise((resolve, reject) => {
+                if(number % 2 == 0) {
+                    console.log("This is rejected:", number);
+                }
+                else {
+                    console.log("This is resolved:", number);
+                }
+            });
+        }
+
+        function iteration(list) {
+            for (let i = 0; i < list.length; i++) {
+                isOdd(list[i]);
+            }
+        }
+        iteration(numList);
+
+
+    // 2.  Write an asynchronous function - resolve
+
+        function getRandomCharacter() {
+            return new Promise((resolve, reject) => {
+                setTimeout(()=> {
+                    let strList = "LaVerdadChristianCollege";
+                    let randomPick = Math.floor(Math.random() * strList.length);
+                    resolve(strList[randomPick]);
+                }, 500);
+            });
+        }
+        getRandomCharacter()
+
+        .then(character => {
+            console.log("Resolved character:", character);
+        })
+        .catch(error => {
+            console.log("Rejected Character:", error);
+        })
+
+
+    // Task #3.
+
+        function getData(){
+            return new Promise((resolve, reject) => {
+                setTimeout(()=> {
+                    let randomPick = Math.floor(Math.random() * 200);
+                    reject(randomPick);
+                }, 500);
+            })
+        }
+        getData()
+
+        .then(character => {
+            console.log("Resolved character:", character);
+        })
+        .catch(error => {
+            console.log("Rejected Character:", error);
+        });
+    
+
+    // Task #4.  
+        function rejectResolve(){
+            return new Promise((resolve, reject) => {
+                setTimeout(()=>{
+                    for (let i = 0; i < 2; i++){
+                        if (i === 1){
+                            console.log("Resolve Function 4");
+                        } else {
+                            console.log("Reject Function 4");
+                        }
+                    }
+                });
+            });
+        }
+        rejectResolve()
+
+        
+    </script>
+</body>
+</html>
